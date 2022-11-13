@@ -29,6 +29,7 @@ export default function _App({ Component, pageProps }: AppPropsWithLayout) {
       })
   )
   const getLayout = Component.getLayout ?? ((page) => page)
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>

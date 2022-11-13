@@ -45,12 +45,19 @@ export const useHighchartsOptions = (
 
 export const generateHighchartsOptionsSeriesData = (
   data: PopulationResponse["result"]["data"]
-): number[][] =>
-  data
+): number[][] => {
+  const DISPLAY_MIN_YEAR = 1980
+  const DISPLAY_MAX_YEAR = 2020
+
+  return data
     .filter(
-      (data) => 1980 <= data.year && data.year <= 2020 && data.year % 10 === 0
+      (data) =>
+        DISPLAY_MIN_YEAR <= data.year &&
+        data.year <= DISPLAY_MAX_YEAR &&
+        data.year % 10 === 0 // 10年毎に表示する
     )
     .map((data) => [data.year, data.value])
+}
 
 const baseHighchartsOptions: Highcharts.Options = {
   chart: {
