@@ -74,15 +74,15 @@ const baseHighchartsOptions: Highcharts.Options = {
   title: {
     text: "",
   },
+  tooltip: {
+    valueSuffix: "人",
+  },
   xAxis: {
-    labels: {
-      format: "{text}年",
-    },
     min: 1980,
     max: 2020,
     tickInterval: 10,
     title: {
-      text: "",
+      text: null,
     },
   },
   yAxis: {
@@ -93,7 +93,7 @@ const baseHighchartsOptions: Highcharts.Options = {
     max: 14_000_000,
     tickInterval: 2_000_000,
     title: {
-      text: "",
+      text: null,
     },
   },
 }
