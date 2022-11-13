@@ -1,0 +1,60 @@
+name: Test
+
+on: pull_request
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+      - name: Run typecheck
+        run: yarn typecheck
+
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+      - name: Run lint
+        run: yarn lint
+
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+      - name: Run format
+        run: yarn format
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+      - name: Run test
+        run: yarn test
