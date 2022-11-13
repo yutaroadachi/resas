@@ -20,15 +20,16 @@ export const useHighchartsOptions = (
   })
 
   const series: Highcharts.Options["series"] = useMemo(() => {
-    return queries.length > 0
-      ? queries.map((query) => {
-          const prefName = query.data?.result.prefName as string
-          const data = query.data?.result.data
-            .filter(
-              (data) =>
-                1980 <= data.year && data.year <= 2020 && data.year % 10 === 0
-            )
-            .map((data) => [data.year, data.value]) as number[][]
+    const successQueries = queries.filter((query) => query.isSuccess)
+
+    return successQueries.length > 0
+      ? successQueries.map((query) => {
+          // eslint-disable-next-line
+          const prefName = query.data?.result.prefName!
+          const data = generateHighchartsOptionsSeriesData(
+            // eslint-disable-next-line
+            query.data?.result.data!
+          )
 
           return {
             type: "line",
@@ -41,6 +42,15 @@ export const useHighchartsOptions = (
 
   return { ...baseHighchartsOptions, series }
 }
+
+export const generateHighchartsOptionsSeriesData = (
+  data: PopulationResponse["result"]["data"]
+): number[][] =>
+  data
+    .filter(
+      (data) => 1980 <= data.year && data.year <= 2020 && data.year % 10 === 0
+    )
+    .map((data) => [data.year, data.value])
 
 const baseHighchartsOptions: Highcharts.Options = {
   chart: {
