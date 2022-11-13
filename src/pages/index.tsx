@@ -1,19 +1,19 @@
 import { getLayout } from "@/components/Layout"
 import { getPrefectures } from "@/features/resas/server/client"
-import { PrefecturesResponse } from "@/features/resas/types/prefectures"
+import { Prefecture } from "@/features/resas/types/prefectures"
 import { Top } from "@/features/top/components"
 import type { GetStaticProps } from "next"
 import NextHeadSeo from "next-head-seo"
 
 export type TopPageProps = {
-  prefectures: PrefecturesResponse
+  prefectures: Prefecture[]
 }
 
 export const getStaticProps: GetStaticProps<TopPageProps> = async () => {
-  const prefectures = await getPrefectures()
+  const res = await getPrefectures()
   return {
     props: {
-      prefectures,
+      prefectures: res.result,
     },
     revalidate: 86400,
   }

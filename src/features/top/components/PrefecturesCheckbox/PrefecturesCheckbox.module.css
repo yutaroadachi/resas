@@ -1,3 +1,7 @@
+.section {
+  margin-bottom: 32px;
+}
+
 .checkboxes {
   display: flex;
   flex-wrap: wrap;

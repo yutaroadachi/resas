@@ -1,8 +1,8 @@
-import { PrefecturesResponse } from "@/features/resas/types/prefectures"
+import { Prefecture } from "@/features/resas/types/prefectures"
 import classes from "./PrefecturesCheckbox.module.css"
 
 export type PrefecturesCheckboxProps = {
-  prefectures: PrefecturesResponse
+  prefectures: Prefecture[]
   handleChangeCheckbox: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -11,21 +11,21 @@ export const PrefecturesCheckbox = ({
   handleChangeCheckbox,
 }: PrefecturesCheckboxProps) => {
   return (
-    <section>
+    <section className={classes.section}>
       <h2>都道府県</h2>
       <div className={classes.checkboxes}>
-        {prefectures.result.map((prefecture) => {
-          const id = `pref-${prefecture.prefCode}`
+        {prefectures.map((pref) => {
+          const id = `pref-${pref.prefCode}`
           return (
             <div key={id}>
               <input
                 type="checkbox"
                 id={id}
-                value={prefecture.prefCode}
+                value={pref.prefCode}
                 onChange={handleChangeCheckbox}
               />
               <label htmlFor={id} className={classes.label}>
-                {prefecture.prefName}
+                {pref.prefName}
               </label>
             </div>
           )
