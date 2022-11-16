@@ -1,16 +1,8 @@
+import { prefectures } from "@/mocks/data/prefectures"
 import { act, renderHook } from "@testing-library/react"
 import { useSelectedPrefectures } from "./useSelectedPrefectures"
 
 describe("useSelectedPrefectures", () => {
-  type FunctionType = typeof useSelectedPrefectures
-
-  const prefectures: Parameters<FunctionType>[0] = [
-    { prefCode: 36, prefName: "徳島県" },
-    { prefCode: 37, prefName: "香川県" },
-    { prefCode: 38, prefName: "愛媛県" },
-    { prefCode: 39, prefName: "高知県" },
-  ]
-
   it("selectedPrefecturesの初期値が空配列であること", () => {
     const { result } = renderHook(() => useSelectedPrefectures(prefectures))
 

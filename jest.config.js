@@ -8,7 +8,7 @@ const customJestConfig = {
   moduleDirectories: ["node_modules", "<rootDir>"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
-    "\\.css$": "<rootDir>/src/mocks/styleMock.js",
+    "\\.css$": "<rootDir>/src/mocks/data/styleMock.js",
   },
   roots: ["<rootDir>/src"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
