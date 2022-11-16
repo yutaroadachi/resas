@@ -4,7 +4,7 @@ describe("useHighchartsOptions", () => {
   describe("generateHighchartsOptionsSeriesData", () => {
     type FunctionType = typeof generateHighchartsOptionsSeriesData
 
-    it("期待通りのデータが生成されること", () => {
+    it("総人口APIレスポンスから、1980年から2020年まで10年毎の年と総人口のタプルの配列が動的に生成されること", () => {
       const data: Parameters<FunctionType>[0] = [
         { year: 1960, value: 5039206 },
         { year: 1965, value: 5171800 },
